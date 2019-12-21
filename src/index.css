@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    background: #333333;
+}
+
+.container {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.board {
+    display: inline-block;
+    width: 1542px;
+}
+
+.sidebar {
+    display: inline-flex;
+    background: red;
+    width: 298px;
+    justify-content: center;
+    position: absolute;
+    margin-top: -10.5px;
+    top: 50%;
+}
+
+.sidebar * {
+    width: 100%;
+}
+
+table {
+    color: white;
+    font-family: 'Seymour One', sans-serif;
+    font-size: 24px;
+    border-collapse: collapse;
+    position: absolute;
+    margin-top: -368px;
+    margin-left: 80px;
+    top: 50%;
+}
+
+td {
+    background: #6A6A6A;
+    border: 2px solid #303030;
+}
+
+.expert td {
+    height: 44px;
+    width: 44px;
+    padding: 0;
+    text-align: center;
+}
+
+td._mine {
+    background: black;
+}
+
+td._flag {
+    background: lightgray;
+}
+
+td._0 {
+    background: #4A4A4A;
+}
+
+td._1 {
+    color: #59AFFE;
+}
+
+td._2 {
+    color: #31DC65;
+}
+
+td._3 {
+    color: #CA3B3B;
+}
+
+td._4 {
+    color: #C15AE3;
+}
+
+td._5 {
+    color: #E0CC1E;
+}
+
+td._6 {
+    color: #019C9D;
+}
+
+td._7 {
+    color: lightgray;
+}
+
+td._8 {
+    color: lightpink;
+}
