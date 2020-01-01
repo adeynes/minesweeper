@@ -7,11 +7,8 @@ class RevealedStatus extends SquareStatus {}
 class FlaggedStatus extends SquareStatus {}
 
 
-let SquareStatus_ = {
+export default {
     NONE: NoStatus,
     REVEALED: RevealedStatus,
     FLAGGED: FlaggedStatus
 };
-
-
-export default SquareStatus_;

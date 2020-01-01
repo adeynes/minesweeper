@@ -7,7 +7,7 @@ import Vector2 from "utils/Vector2";
 import { create2dArray } from "utils/ArrayUtils";
 
 
-class Board {
+export default class Board {
     /**
      * @type {BoardConfig}
      */
@@ -184,6 +184,3 @@ class Board {
         return true;
     }
 }
-
-
-export default Board;

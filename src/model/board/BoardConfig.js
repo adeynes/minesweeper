@@ -1,7 +1,7 @@
 import BoardDimensions from "model/board/BoardDimensions";
 
 
-class BoardConfig {
+export default class BoardConfig {
     /**
      * @param {BoardDimensions} dimensions
      * @param {number} numMines
@@ -30,6 +30,3 @@ export const INTERMEDIATE_CONFIG = new BoardConfig(new BoardDimensions(16, 16), 
  * @type {BoardConfig}
  */
 export const EXPERT_CONFIG = new BoardConfig(new BoardDimensions(16, 30), 99);
-
-
-export default BoardConfig;

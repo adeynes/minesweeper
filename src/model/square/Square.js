@@ -1,7 +1,7 @@
 import SquareStatus from "model/square/SquareStatus";
 
 
-class Square {
+export default class Square {
     /**
      * @param {Vector2} index
      * @param {SquareStatus} status
@@ -23,6 +23,3 @@ class Square {
  * @constructor
  */
 export let DefaultSquare = (id) =>  new Square(id, SquareStatus.NONE, false, 0);
-
-
-export default Square;

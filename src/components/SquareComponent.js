@@ -5,7 +5,7 @@ import Square from "model/square/Square";
 import SquareStatus from "model/square/SquareStatus";
 
 
-class SquareComponent extends React.Component {
+export default class SquareComponent extends React.Component {
     /**
      * @returns {{content: string, className: string}}
      */
@@ -64,6 +64,3 @@ SquareComponent.propTypes = {
     value: PropTypes.instanceOf(Square),
     onClick: PropTypes.func
 };
-
-
-export default SquareComponent;

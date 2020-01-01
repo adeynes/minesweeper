@@ -8,7 +8,7 @@ import SquareComponent from "components/SquareComponent";
 import SquareStatus from "model/square/SquareStatus";
 
 
-class BoardComponent extends React.Component {
+export default class BoardComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = { board: new Board(this.props.config, this.postUserActionCallback.bind(this)) };
@@ -74,6 +74,3 @@ BoardComponent.propTypes = {
     config: PropTypes.instanceOf(BoardConfig),
     alive: PropTypes.bool
 };
-
-
-export default BoardComponent;

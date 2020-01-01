@@ -1,4 +1,4 @@
-class BoardDimensions {
+export default class BoardDimensions {
     /**
      * @param {number} height
      * @param {number} width
@@ -8,6 +8,3 @@ class BoardDimensions {
         this.width = width;
     }
 }
-
-
-export default BoardDimensions;

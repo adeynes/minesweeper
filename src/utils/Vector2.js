@@ -1,4 +1,4 @@
-class Vector2 {
+export default class Vector2 {
     /**
      * @param {number} x
      * @param {number} y
@@ -16,6 +16,3 @@ class Vector2 {
         return new Vector2(this.x + v.x, this.y + v.y);
     }
 }
-
-
-export default Vector2;

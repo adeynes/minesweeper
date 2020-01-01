@@ -7,7 +7,7 @@ import BoardConfig, { BEGINNER_CONFIG, INTERMEDIATE_CONFIG, EXPERT_CONFIG } from
 import ButtonComponent from "components/ButtonComponent";
 
 
-class MinesweeperComponent extends React.Component {
+export default class MinesweeperComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = { boardConfig: props.boardConfig, isBoardAlive: true };
@@ -40,6 +40,3 @@ class MinesweeperComponent extends React.Component {
 MinesweeperComponent.propTypes = {
     boardConfig: PropTypes.instanceOf(BoardConfig)
 };
-
-
-export default MinesweeperComponent;

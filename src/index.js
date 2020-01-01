@@ -8,6 +8,7 @@ import BoardDimensions from "model/board/BoardDimensions";
 
 import "./index.css"
 
+
 ReactDOM.render(
     <MinesweeperComponent boardConfig={new BoardConfig(new BoardDimensions(16, 30), 99)} />,
     document.getElementById("root")
