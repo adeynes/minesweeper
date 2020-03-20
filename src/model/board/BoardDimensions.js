@@ -7,4 +7,11 @@ export default class BoardDimensions {
         this.height = height;
         this.width = width;
     }
+
+    /**
+     * @returns {number}
+     */
+    getTotalCellCount() {
+        return this.height * this.width;
+    }
 }

@@ -5,6 +5,7 @@ import SquareStatus from "model/square/SquareStatus";
 
 import Vector2 from "utils/Vector2";
 import { create2dArray } from "utils/ArrayUtils";
+import { getMineListFromSeed } from "utils/SeedGenerator";
 
 
 export default class Board {
@@ -12,10 +13,17 @@ export default class Board {
      * @type {BoardConfig}
      */
     config;
+
+    /**
+     * @type {string}
+     */
+    seed;
+
     /**
      * @type {Square[][]}
      */
     squares;
+
     /**
      * @type {Set<Square>}
      */
@@ -30,17 +38,29 @@ export default class Board {
     /**
      * @type {noticeCallback}
      */
-    postUserActionCallback;
+    postSetStateCallback;
 
     /**
      * @param {BoardConfig} config
-     * @param {noticeCallback} postUserActionCallback
+     * @param {string} seed
+     * @param {noticeCallback} postSetStateCallback
      */
-    constructor(config, postUserActionCallback) {
+    constructor(config, seed, postSetStateCallback) {
         this.config = config;
+        this.seed = seed;
         this.squares = create2dArray(config.dimensions, (x, y) => DefaultSquare(new Vector2(x, y)));
         this.revealedSquares = new Set();
-        this.postUserActionCallback = postUserActionCallback;
+        this.postSetStateCallback = postSetStateCallback;
+    }
+
+    /**
+     * Returns the Vector2 index (0 => [0, 0], 164 => [5, 14], 479 => [15, 29] for 16x30)
+     * @param {number} number
+     * @returns {?Vector2}
+     */
+    getIndexFromNumber(number) {
+        let width = this.config.dimensions.width;
+        return new Vector2(Math.floor(number / width), number % width);
     }
 
     /**
@@ -53,7 +73,6 @@ export default class Board {
     }
 
     /**
-     *
      * @param {Vector2} index
      * @returns {boolean}
      */
@@ -88,7 +107,8 @@ export default class Board {
     }
 
     placeMines() {
-        _.sample(_.flatten(this.squares), this.config.numMines).forEach(square => square.hasMine = true);
+        getMineListFromSeed(this.seed, this.config.dimensions.getTotalCellCount())
+            .forEach(index => this.getSquare(this.getIndexFromNumber(index)).hasMine = true);
     }
 
     setNeighborMineCounts() {
@@ -104,13 +124,13 @@ export default class Board {
     /**
      * @param {Square} square
      * @param {SquareStatus} newStatus
-     * @param {boolean} noticeStatus The status passed to postUserActionCallback
+     * @param {boolean} noticeStatus The status passed to postSetStateCallback
      */
     setSquareStatus(square, newStatus, noticeStatus) {
         let { x, y } = square.index;
         this.squares[x][y].status = newStatus;
 
-        this.postUserActionCallback(this, noticeStatus);
+        this.postSetStateCallback(this, noticeStatus);
     }
 
     /**

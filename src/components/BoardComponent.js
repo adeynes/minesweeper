@@ -11,14 +11,18 @@ import SquareStatus from "model/square/SquareStatus";
 export default class BoardComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { board: new Board(this.props.config, this.postUserActionCallback.bind(this)) };
+        this.state = { board: new Board(this.props.config, this.props.seed, this.postSetStateCallback.bind(this)) };
     }
 
-    componentDidMount() {
-        this.state.board.initialize();
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps !== this.props) {
+            this.setState({ board : new Board(this.props.config, this.props.seed, this.postSetStateCallback.bind(this)) });
+        }
     }
 
     render() {
+        this.state.board.initialize();
+
         return <table><tbody>{this.createTable()}</tbody></table>;
     }
 
@@ -59,7 +63,7 @@ export default class BoardComponent extends React.Component {
         }
     }
 
-    postUserActionCallback(newBoard, noticeStatus) {
+    postSetStateCallback(newBoard, noticeStatus) {
         this.setState({ board: newBoard });
 
         // we have to check for strict falsehood because falsy notice statuses (ex. null) might not indicate a loss
@@ -72,5 +76,5 @@ export default class BoardComponent extends React.Component {
 
 BoardComponent.propTypes = {
     config: PropTypes.instanceOf(BoardConfig),
-    alive: PropTypes.bool
+    seed: PropTypes.string
 };

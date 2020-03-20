@@ -6,23 +6,27 @@ import BoardConfig, { BEGINNER_CONFIG, INTERMEDIATE_CONFIG, EXPERT_CONFIG } from
 
 import ButtonComponent from "components/ButtonComponent";
 
+import { generateSeed } from "utils/SeedGenerator";
+
 
 export default class MinesweeperComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { boardConfig: props.boardConfig, isBoardAlive: true };
+        this.state = { boardConfig: props.boardConfig };
     }
 
     render() {
+        console.log("re");
+        console.log(this.state.boardConfig);
         return (
             <div className="container expert">
                 <div className="board">
-                    <BoardComponent config={this.state.boardConfig} alive={this.state.isBoardAlive} />
+                    <BoardComponent config={this.state.boardConfig} seed={generateSeed(this.state.boardConfig)} />
                 </div>
                 <div className="sidebar">
-                    <ButtonComponent value="BEGINNER" onClick={() => this.setBoardConfig(BEGINNER_CONFIG)} />
-                    <ButtonComponent value="INTERMEDIATE" onClick={() => this.setBoardConfig(INTERMEDIATE_CONFIG)} />
-                    <ButtonComponent value="EXPERT" onClick={() => this.setBoardConfig(EXPERT_CONFIG)} />
+                    <ButtonComponent value="BEGINNER" onClick={() => this.newBoard(BEGINNER_CONFIG)} />
+                    <ButtonComponent value="INTERMEDIATE" onClick={() => this.newBoard(INTERMEDIATE_CONFIG)} />
+                    <ButtonComponent value="EXPERT" onClick={() => this.newBoard(EXPERT_CONFIG)} />
                 </div>
             </div>
         );
@@ -31,8 +35,8 @@ export default class MinesweeperComponent extends React.Component {
     /**
      * @param {BoardConfig} config
      */
-    setBoardConfig(config) {
-
+    newBoard(config) {
+        this.setState({ boardConfig : config });
     }
 }
 
