@@ -11,7 +11,10 @@ import SquareStatus from "model/square/SquareStatus";
 export default class BoardComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { board: new Board(this.props.config, this.props.seed, this.postSetStateCallback.bind(this)) };
+        this.state = {
+            board: new Board(this.props.config, this.props.seed, this.postSetStateCallback.bind(this)),
+            isAlive: true
+        };
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -43,6 +46,10 @@ export default class BoardComponent extends React.Component {
     }
 
     handleClick(index, event) {
+        if (!this.state.isAlive) {
+            return;
+        }
+
         event.preventDefault();
 
         let board = this.state.board;
@@ -68,7 +75,7 @@ export default class BoardComponent extends React.Component {
 
         // we have to check for strict falsehood because falsy notice statuses (ex. null) might not indicate a loss
         if (noticeStatus === false) {
-            console.log("YOU LOSE");
+            this.setState({ isAlive: false });
         }
     }
 }
