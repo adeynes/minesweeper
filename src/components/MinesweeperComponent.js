@@ -34,7 +34,7 @@ export default class MinesweeperComponent extends React.Component {
      * @param {BoardConfig} config
      */
     newBoard(config) {
-        this.setState({ boardConfig : config });
+        this.setState({ boardConfig: config });
     }
 }
 

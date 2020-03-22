@@ -19,8 +19,15 @@ export default class BoardComponent extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps !== this.props) {
-            this.setState({ board : new Board(this.props.config, this.props.seed, this.postSetStateCallback.bind(this)) });
+            this.resetState(new Board(this.props.config, this.props.seed, this.postSetStateCallback.bind(this)));
         }
+    }
+
+    resetState(board) {
+        this.setState({
+            board: board,
+            isAlive: true
+        })
     }
 
     render() {
