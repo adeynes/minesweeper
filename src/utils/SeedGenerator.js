@@ -22,7 +22,6 @@ export function generateSeed(config) {
     _.sample([...Array(config.dimensions.getTotalCellCount()).keys()], config.numMines)
         .forEach(index => sum |= BigInt(2) ** BigInt(index));
 
-    console.log(sum);
     return sum.toString(36);
 }
 

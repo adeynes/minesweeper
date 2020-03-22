@@ -16,8 +16,6 @@ export default class MinesweeperComponent extends React.Component {
     }
 
     render() {
-        console.log("re");
-        console.log(this.state.boardConfig);
         return (
             <div className="container expert">
                 <div className="board">
