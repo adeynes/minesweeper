@@ -63,7 +63,7 @@ export default class BoardComponent extends React.Component {
         let square = board.getSquare(index);
 
         if (event.type === "click") {
-            if (square.status === SquareStatus.REVEALED) {
+            if (square.status === SquareStatus.REVEALED && !square.hasMine) {
                 board.revealNeighbors(square);
             } else if (square.status === SquareStatus.NONE) {
                 board.revealSquare(square);
