@@ -17,7 +17,7 @@ export default class SquareComponent extends React.Component {
         switch (value.status) {
             case SquareStatus.REVEALED:
                 if (this.props.value.hasMine) {
-                    content = "";
+                    content = String.fromCharCode(215); // times
                     className = "_mine";
                 } else {
                     content = value.neighborMineCount !== 0 ? value.neighborMineCount : "" ;
@@ -25,7 +25,7 @@ export default class SquareComponent extends React.Component {
                 }
                 break;
             case SquareStatus.FLAGGED:
-                content = "";
+                content = String.fromCharCode(215); // times
                 className = "_flag";
                 break;
             default:

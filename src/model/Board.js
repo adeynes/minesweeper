@@ -164,7 +164,11 @@ export default class Board {
      */
     revealNeighbors(square) {
         // whether a square with n neighbor mines has n flags around it
-        let completelyFlagged = this.getNeighbors(square).filter(neighbor_ => neighbor_.status === SquareStatus.FLAGGED)
+        let completelyFlagged = this.getNeighbors(square)
+            .filter(neighbor_ =>
+                        (neighbor_.status === SquareStatus.FLAGGED) ||
+                        (neighbor_.hasMine && neighbor_.status === SquareStatus.REVEALED)
+            )
             .length === square.neighborMineCount;
         if (square.status !== SquareStatus.REVEALED || !completelyFlagged) {
             return null;

@@ -41,55 +41,60 @@ table {
 td {
     background: #6A6A6A;
     border: 2px solid #303030;
+    padding: 0;
+    text-align: center;
 }
 
 .expert td {
     height: 44px;
     width: 44px;
-    padding: 0;
-    text-align: center;
 }
 
 td._mine {
+    font-family: monospace;
+    font-size: 30px;
     background: black;
 }
 
 td._flag {
-    background: lightgray;
+    font-family: monospace;
+    font-size: 30px;
+    color: orange;
+    border: 2px double orange;
 }
 
 td._0 {
-    background: #4A4A4A;
+    background: #454545;
 }
 
 td._1 {
-    color: #59AFFE;
+    background: #59AFFE;
 }
 
 td._2 {
-    color: #31DC65;
+    background: #31DC65;
 }
 
 td._3 {
-    color: #CA3B3B;
+    background: #CA3B3B;
 }
 
 td._4 {
-    color: #C15AE3;
+    background: #C15AE3;
 }
 
 td._5 {
-    color: #E0CC1E;
+    background: #E0CC1E;
 }
 
 td._6 {
-    color: #019C9D;
+    background: #019C9D;
 }
 
 td._7 {
-    color: lightgray;
+    background: lightgray;
 }
 
 td._8 {
-    color: lightpink;
+    background: lightpink;
 }

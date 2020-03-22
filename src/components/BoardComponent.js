@@ -82,7 +82,7 @@ export default class BoardComponent extends React.Component {
 
         // we have to check for strict falsehood because falsy notice statuses (ex. null) might not indicate a loss
         if (noticeStatus === false) {
-            this.setState({ isAlive: false });
+            // this.setState({ isAlive: false });
         }
     }
 }
